@@ -10,7 +10,7 @@ namespace asp.net_blog.Controllers
     {
         public ActionResult Index()
         {
-            return Content("Hey");
+            return View();
         }
     }
 }

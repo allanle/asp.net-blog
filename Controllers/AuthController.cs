@@ -10,7 +10,7 @@ namespace asp.net_blog.Controllers
     {
         public ActionResult Login()
         {
-            return Content("Login");
+            return View();
         }
     }
 }
