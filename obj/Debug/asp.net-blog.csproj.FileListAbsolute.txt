@@ -31,3 +31,10 @@ E:\Workspace\asp.net-blog\bin\System.Web.Mvc.xml
 E:\Workspace\asp.net-blog\obj\Debug\asp.net-blog.csprojResolveAssemblyReference.cache
 E:\Workspace\asp.net-blog\obj\Debug\asp.net-blog.dll
 E:\Workspace\asp.net-blog\obj\Debug\asp.net-blog.pdb
+E:\Workspace\asp.net-blog\bin\Antlr3.Runtime.dll
+E:\Workspace\asp.net-blog\bin\Newtonsoft.Json.dll
+E:\Workspace\asp.net-blog\bin\System.Web.Optimization.dll
+E:\Workspace\asp.net-blog\bin\WebGrease.dll
+E:\Workspace\asp.net-blog\bin\Antlr3.Runtime.pdb
+E:\Workspace\asp.net-blog\bin\Newtonsoft.Json.xml
+E:\Workspace\asp.net-blog\bin\System.Web.Optimization.xml
