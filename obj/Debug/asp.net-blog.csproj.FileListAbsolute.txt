@@ -38,3 +38,6 @@ E:\Workspace\asp.net-blog\bin\WebGrease.dll
 E:\Workspace\asp.net-blog\bin\Antlr3.Runtime.pdb
 E:\Workspace\asp.net-blog\bin\Newtonsoft.Json.xml
 E:\Workspace\asp.net-blog\bin\System.Web.Optimization.xml
+E:\Workspace\asp.net-blog\bin\FluentMigrator.dll
+E:\Workspace\asp.net-blog\bin\FluentMigrator.pdb
+E:\Workspace\asp.net-blog\bin\FluentMigrator.xml
