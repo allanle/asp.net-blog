@@ -41,3 +41,8 @@ E:\Workspace\asp.net-blog\bin\System.Web.Optimization.xml
 E:\Workspace\asp.net-blog\bin\FluentMigrator.dll
 E:\Workspace\asp.net-blog\bin\FluentMigrator.pdb
 E:\Workspace\asp.net-blog\bin\FluentMigrator.xml
+E:\Workspace\asp.net-blog\bin\Iesi.Collections.dll
+E:\Workspace\asp.net-blog\bin\MySql.Data.dll
+E:\Workspace\asp.net-blog\bin\NHibernate.dll
+E:\Workspace\asp.net-blog\bin\Iesi.Collections.xml
+E:\Workspace\asp.net-blog\bin\NHibernate.xml

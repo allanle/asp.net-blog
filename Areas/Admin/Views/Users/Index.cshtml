@@ -1,1 +1,10 @@
-﻿<h1>Users</h1>
+﻿@model asp.net_blog.Areas.Admin.ViewModels.UsersIndex
+
+<h1>Users</h1>
+
+<ul>
+    @foreach(var user in Model.Users)
+    {
+        <li>@user.Username</li>
+    }
+</ul>

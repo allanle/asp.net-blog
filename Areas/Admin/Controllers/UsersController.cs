@@ -1,4 +1,7 @@
-﻿using asp.net_blog.Infrastructure;
+﻿using asp.net_blog.Areas.Admin.ViewModels;
+using asp.net_blog.Infrastructure;
+using NHibernate.Linq;
+using asp.net_blog.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +16,10 @@ namespace asp.net_blog.Areas.Admin.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View(new UsersIndex
+            {
+                Users = Database.Session.Query<User>().ToList()
+            });
         }
     }
 }
