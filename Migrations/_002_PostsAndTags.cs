@@ -24,9 +24,9 @@ namespace asp.net_blog.Migrations
                 .WithColumn("user_id").AsInt32().ForeignKey("users", "id")
                 .WithColumn("title").AsString(128)
                 .WithColumn("slug").AsString(128)
-                .WithColumn("create_at").AsDateTime()
-                .WithColumn("updated_at").AsDateTime().NotNullable()
-                .WithColumn("deleted_at").AsDateTime().NotNullable();
+                .WithColumn("created_at").AsDateTime()
+                .WithColumn("updated_at").AsDateTime().Nullable()
+                .WithColumn("deleted_at").AsDateTime().Nullable();
 
             Create.Table("tags")
                 .WithColumn("id").AsInt32().PrimaryKey().Identity()

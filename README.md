@@ -3,7 +3,9 @@ My ASP.NET blogging project
 
 // Migration Setup
 asp.net-blog\Tool\DeployDb-Dev
-..\packages\FluentMigrator.1.6.1\tools\Migrate.exe --db=mysql --target=..\bin\asp.net-blog.dll --configPath=..\Web.config -c=MainDb
+.\packages\FluentMigrator.1.6.1\tools\Migrate.exe --db=mysql --target=.\bin\asp.net-blog.dll --configPath=.\Web.config -c=MainDb
+
+.\packages\FluentMigrator.1.6.1\tools\Migrate.exe --db=mysql --target=.\bin\asp.net-blog.dll --configPath=.\Web.config -c=MainDb -t=rollback
 
 1. Password Encryping using BCrypt
     - Blowfish cipher
