@@ -45,10 +45,11 @@ namespace asp.net_blog.Infrastructure
             throw new NotImplementedException();
         }
 
+        // Searching all currently logged on users, selecting out their name and returning as an Array
         public override string[] GetRolesForUser(string username)
         {
 
-            return new[] { "admin" };
+            return Auth.User.Roles.Select(role => role.Name).ToArray();
         }
 
         public override string[] GetUsersInRole(string roleName)
