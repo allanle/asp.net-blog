@@ -1,1 +1,1 @@
-..\packages\FluentMigrator.1.6.1\tools\Migrate.exe --db=mysql --target=..\bin\asp.net-blog.dll --configPath=..\Web.config -c=MainDb
+.\packages\FluentMigrator.1.6.1\tools\Migrate.exe --db=mysql --target=.\bin\asp.net-blog.dll --configPath=.\Web.config -c=MainDb
