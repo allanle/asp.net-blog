@@ -36,7 +36,13 @@ namespace asp.net_blog.Areas.Admin.Controllers
         {
             return View("Form", new PostsForm
             {
-                IsNew = true
+                IsNew = true,
+                Tags = Database.Session.Query<Tag>().Select(tag => new TagCheckbox
+                {
+                    Id = tag.Id,
+                    Name = tag.Name,
+                    IsChecked = false
+                }).ToList()
             });
         }
 
@@ -55,7 +61,13 @@ namespace asp.net_blog.Areas.Admin.Controllers
                 PostId = id,
                 Content = post.Content,
                 Slug = post.Slug,
-                Title = post.Title
+                Title = post.Title,
+                Tags = Database.Session.Query<Tag>().Select(tag => new TagCheckbox
+                {
+                    Id = tag.Id,
+                    Name = tag.Name,
+                    IsChecked = post.Tags.Contains(tag)
+                }).ToList()
             });
         }
 
