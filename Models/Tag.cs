@@ -24,7 +24,7 @@ namespace asp.net_blog.Models
 
             Id(x => x.Id, x => x.Generator(Generators.Identity));
 
-            Property(x => x.Slug, x => x.NotNullable(true));
+            Property(x => x.Name, x => x.NotNullable(true));
             Property(x => x.Slug, x => x.NotNullable(true));
 
             Bag(x => x.Posts, x =>
