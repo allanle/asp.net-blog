@@ -22,6 +22,11 @@ namespace asp.net_blog.Models
 
         public virtual IList<Tag> Tags { get; set; }
 
+        public Post()
+        {
+            Tags = new List<Tag>();
+        }
+
         public virtual bool IsDeleted { get { return DeletedAt != null; } }
     }
 

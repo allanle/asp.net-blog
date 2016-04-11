@@ -1,9 +1,8 @@
-﻿$(document).ready(function ()
-{
+﻿$(document).ready(function() {
     var $tagEditor = $(".post-tag-editor");
 
-    $tagEditor.find(".tag-select").on("click", "> li > a", function (e)
-    {
+    // Enable checkbox beside tag name if selected.
+    $tagEditor.find(".tag-select").on("click", "> li > a", function(e) {
         e.preventDefault();
 
         var $this = $(this);
@@ -11,21 +10,20 @@
         $tagParent.toggleClass("selected");
 
         var selected = $tagParent.hasClass("selected");
-        $tagParent.find(".slected-input").val(selected);
+        $tagParent.find(".selected-input").val(selected);
     });
 
     var $addTagButton = $tagEditor.find(".add-tag-button");
     var $newTagName = $tagEditor.find(".new-tag-name");
 
-    $addTagButton.click(function (e)
-    {
+    $addTagButton.click(function(e) {
         e.preventDefault();
         addTag($newTagName.val());
     });
 
+    // Disabled button if there are no characters in text box, otherwise enable button.
     $newTagName
-        .keyup(function ()
-        {
+        .keyup(function() {
             if($newTagName.val().trim().length > 0)
             {
                 $addTagButton.prop("disabled", false);
@@ -35,7 +33,7 @@
                 $addTagButton.prop("disabled", true);
             }
         })
-        .keydown(function (e)
+        .keydown(function(e)
         {
             if(e.which != 13) 
             {
@@ -45,8 +43,9 @@
             addTag($newTagName.val());
     });
 
+    // Allow admin user to add addional tags.
     function addTag(name) {
-        var $newIndex = $tagEditor.find(".tag-select > li").size() - 1;
+        var newIndex = $tagEditor.find(".tag-select > li").size() - 1;
 
         $tagEditor
             .find(".tag-select > li.template")

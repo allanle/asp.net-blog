@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using NHibernate.Linq;
 using System;
+using System.Collections.Generic;
+using asp.net_blog.Infrastructure.Extensions;
 
 namespace asp.net_blog.Areas.Admin.Controllers
 {
@@ -81,6 +83,8 @@ namespace asp.net_blog.Areas.Admin.Controllers
                 return View(form);
             }
 
+            var selectedTags = ReconsileTags(form.Tags);
+
             Post post;
             if (form.IsNew)
             {
@@ -89,16 +93,31 @@ namespace asp.net_blog.Areas.Admin.Controllers
                     CreateAt = DateTime.UtcNow.ToLocalTime(),
                     user = Auth.User,
                 };
+
+                foreach (var tag in selectedTags)
+                {
+                    post.Tags.Add(tag);
+                }
             }
             else
             {
                 post = Database.Session.Load<Post>(form.PostId);
 
-                if(post == null)
+                if (post == null)
                 {
                     return HttpNotFound();
                 }
                 post.UpdatedAt = DateTime.UtcNow.ToLocalTime();
+
+                foreach (var toAdd in selectedTags.Where(t => !post.Tags.Contains(t)))
+                {
+                    post.Tags.Add(toAdd);
+                }
+
+                foreach (var toRemove in post.Tags.Where(t => !selectedTags.Contains(t)).ToList())
+                {
+                    post.Tags.Remove(toRemove);
+                }
             }
 
             post.Title = form.Title;
@@ -155,6 +174,35 @@ namespace asp.net_blog.Areas.Admin.Controllers
             Database.Session.Update(post);
 
             return RedirectToAction("Index");
+        }
+
+        private IEnumerable<Tag> ReconsileTags(IEnumerable<TagCheckbox> tags)
+        {
+            foreach(var tag in tags.Where(t => t.IsChecked))
+            {
+                if(tag.Id != null)
+                {
+                    yield return Database.Session.Load<Tag>(tag.Id);
+                    continue;
+                }
+
+                var existingTag = Database.Session.Query<Tag>().FirstOrDefault(t => t.Name == tag.Name);
+
+                if(existingTag != null)
+                {
+                    yield return existingTag;
+                    continue;
+                }
+
+                var newTag = new Tag
+                {
+                    Name = tag.Name,
+                    Slug = tag.Name.Slugify()
+                };
+
+                Database.Session.Save(newTag);
+                yield return newTag;
+            }
         }
     }
 }
