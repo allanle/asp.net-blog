@@ -15,17 +15,25 @@ namespace asp.net_blog.Areas.Admin.Controllers
     [SelectedTab("posts")]
     public class PostsController : Controller
     {
-        private const int PostsPerPage = 5;
+        private const int PostsPerPage = 10;
 
         public ActionResult Index(int page = 1)
         {
             var totalPostCount = Database.Session.Query<Post>().Count();
 
-            // Grab Posts by descending order
-            var currentPostPage = Database.Session.Query<Post>()
+            var postIds = Database.Session.Query<Post>()
                 .OrderByDescending(c => c.CreateAt)
                 .Skip((page - 1) * PostsPerPage)
                 .Take(PostsPerPage)
+                .Select(p => p.Id)
+                .ToArray();
+
+            // Grab Posts by descending order
+            var currentPostPage = Database.Session.Query<Post>()
+                .Where(p => postIds.Contains(p.Id))
+                .OrderByDescending(c => c.CreateAt)
+                .FetchMany(f => f.Tags)
+                .Fetch(f => f.user)
                 .ToList();
 
             return View(new PostsIndex
