@@ -1,15 +1,7 @@
-﻿@{ 
+﻿@model asp.net_blog.ViewModels.PostsIndex
+
+@{ 
     ViewBag.Title = "Posts";
 }
 
-
-<h1>posts Index</h1>
-    <!--Send the user to the login page when clicked--> 
-<p>
-    <a href="@Url.RouteUrl("login")">Click here</a> to login!
-</p>
-
-<p>
-    @Html.RouteLink("Click here", "login") to login!
-</p>
-
+@Html.Partial("_Posts", Model.Posts)
