@@ -1,4 +1,5 @@
 ﻿@model asp.net_blog.Areas.Admin.ViewModels.PostsForm
+@using System.Web.Optimization
 
 <h1>@(Model.IsNew ? "Create Post" : "Update Post")</h1>
 
@@ -61,7 +62,7 @@
                             var tag = Model.Tags[i];
 
                             <li data-tag-id="@tag.Id" class="@(tag.IsChecked ? "selected" : "")">
-                               <a href="#">@tag.Name</a>B
+                               <a href="#">@tag.Name</a>
                                 <input type="hidden" name="Tags[@(i)].Id" value="@tag.Id" />
                                 <input type="hidden" name="Tags[@(i)].Name" value="@tag.Name" />
                                 <input type="hidden" name="Tags[@(i)].IsChecked" value="@tag.IsChecked.ToString()" class="selected-input" />
@@ -72,4 +73,9 @@
             </div>
         </div>
     </div>
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/admin/post/scripts");
 }

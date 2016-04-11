@@ -16,7 +16,7 @@
     color: red;
 }
 
-.post-tag-editor  .tag-select {
+.post-tag-editor .tag-select {
     list-style: none;
     padding: 0;
     margin-left: 10px 0;
@@ -43,7 +43,7 @@
     background: #eee;
 }
 
-.post-tag-editor .tag-select li.select a {
+.post-tag-editor .tag-select li.selected a {
     background: #d9edf7;
     border-left-color: #3a87ad;
 }
