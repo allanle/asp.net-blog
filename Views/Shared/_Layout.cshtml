@@ -8,40 +8,36 @@
 
 <html>
 <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title - Blog</title>
 
     @Styles.Render("~/styles")
 </head>
 <body>
-    <header>
-        <h1>
-            <a href="@Url.RouteUrl("home")">Blog</a>
-            <i class="glyphicon glyphicon-bell"></i>
-        </h1>
+    <div class="site-header">
+        <header class="container">
+            <h1 class="page-header">
+                <a href="@Url.RouteUrl("Home")">Awesome Stuff</a>
+                <small>Blog powered by ASP.NET MVC</small>
+            </h1>
+        </header>
+    </div>
 
-        @if (User.Identity.IsAuthenticated)
-        {
-            <p>Welcome back, @User.Identity.Name</p>
-            <a href="@Url.RouteUrl("logout")">Logout</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                @RenderBody()
+            </div>
+            <div class="col-lg-4 sidebar">
+                @Html.Action("Sidebar", "Layout")
+            </div>
+        </div>
 
-            if (User.IsInRole("admin"))
-            {
-                <a href="@Url.Action("index", "Posts", new { area = "admin" })">View posts in admin</a>
-            }
-        }
-        else
-        {
-                    <a href="@Url.RouteUrl("login")">Login</a>
-        }
-    </header>
-
-    <!-- INSERT VIEW HERE-->
-    @RenderBody()
-
-    <footer>
-        &copy; @DateTime.UtcNow.Year - Allan
-    </footer>
+        <footer>
+            &copy; @DateTime.UtcNow.Year
+        </footer>
+    </div>
 
     @Scripts.Render("~/scripts")
     @RenderSection("Scripts", false)
